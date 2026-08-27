@@ -463,6 +463,7 @@ export function EditorHost(props: {
           {!showEmpty && load.status === 'error' && <div className={css.editorError}>{load.message}</div>}
           {!showEmpty && load.status === 'binary' && <BinaryDownload scope={scope} path={path} />}
           {!showEmpty && load.status === 'ready' && createElement(load.viewer.component, {
+            key: reloadSeq,
             ctx, store, scope, path, title,
             viewerId: load.viewer.id,
             content: load.content,
