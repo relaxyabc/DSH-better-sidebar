@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The tr (Turkish) dictionary for the betterSidebar namespace.
  *
  * Mirrors the key set of `zh` in `locales.ts`. The sidebar's `t()`
@@ -243,6 +243,12 @@ export const tr: Record<string, string> = {
   settingsShellArgsPlaceholder: 'ör. -l (boş = varsayılanlar)',
   settingsTabsTitle: 'Kenar çubuğu içeriği',
   settingsViewersTitle: 'Dosya önizleyicileri',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Genel',
   settingsPopup: 'Özellik ayarları',
   settingsViewerCatchAll: 'Hepsi yakala: herhangi bir dosya',

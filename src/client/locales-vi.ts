@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The vi (Vietnamese) dictionary for the betterSidebar namespace.
  *
  * Mirrors the key set of `zh` in `locales.ts`. The sidebar's `t()`
@@ -243,6 +243,12 @@ export const vi: Record<string, string> = {
   settingsShellArgsPlaceholder: 'vd: -l (để trống = mặc định)',
   settingsTabsTitle: 'Nội dung thanh bên',
   settingsViewersTitle: 'Trình xem tệp',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Chung',
   settingsPopup: 'Cài đặt tính năng',
   settingsViewerCatchAll: 'Catch-all: mọi tệp',

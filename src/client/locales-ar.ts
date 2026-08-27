@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The ar (Arabic) dictionary for the betterSidebar namespace.
  *
  * Mirrors the key set of `zh` in `locales.ts`. The sidebar's `t()`
@@ -244,6 +244,12 @@ export const ar: Record<string, string> = {
   settingsShellArgsPlaceholder: 'مثل -l (فارغ = الافتراضيات)',
   settingsTabsTitle: 'محتوى الشريط الجانبي',
   settingsViewersTitle: 'عارضات الملفات',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'عام',
   settingsPopup: 'إعدادات الميزة',
   settingsViewerCatchAll: 'شامل: أي ملف',

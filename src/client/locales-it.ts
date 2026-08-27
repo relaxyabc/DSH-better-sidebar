@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Italian copy for the sidebar. Key-set-equal to `zh` in `locales.ts`;
  * consumed by the better-locale override store (see `locales.ts` for the
  * zh/en/ja lookup chain and the `attachBetterLocale` contract).
@@ -234,6 +234,12 @@ export const it: Record<string, string> = {
   settingsShellArgsPlaceholder: 'es. -l (vuoto = predefiniti)',
   settingsTabsTitle: 'Contenuto della barra laterale',
   settingsViewersTitle: 'Visualizzatori di file',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Generali',
   settingsPopup: 'Impostazioni della funzionalità',
   settingsViewerCatchAll: 'Raccoglitore: qualsiasi file',

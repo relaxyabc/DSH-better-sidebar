@@ -958,3 +958,12 @@
   color: var(--dsw-alias-state-error-primary);
   padding: 0 2px;
 }
+
+/* Skill invocation policy label inside a card's description line. */
+.skillPolicy {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--dsw-alias-label-tertiary);
+}

@@ -1,4 +1,4 @@
-export const sv: Record<string, string> = {
+﻿export const sv: Record<string, string> = {
   files: 'Filer',
   explorer: 'Utforskare',
   git: 'Källkodshantering',
@@ -226,6 +226,12 @@ export const sv: Record<string, string> = {
   settingsShellArgsPlaceholder: 't.ex. -l (tomt = standard)',
   settingsTabsTitle: 'Sidopanelens innehåll',
   settingsViewersTitle: 'Filvisare',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Allmänt',
   settingsPopup: 'Funktionsinställningar',
   settingsViewerCatchAll: 'Fånga alla: alla filer',

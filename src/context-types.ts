@@ -517,12 +517,49 @@ export interface SidebarAgent {
   }
 }
 
+/** Structural mirror of the Cordis Loader (from cordis-plugin-loader). */
+export interface SidebarLoaderEntry {
+  id: string
+  options: {
+    name: string
+    config?: unknown
+    disabled?: boolean | null
+    group?: boolean | null
+  }
+  disabled: boolean
+}
+
+export interface SidebarLoader {
+  entries(): Generator<SidebarLoaderEntry, void, void>
+  update(id: string, options: { disabled?: boolean | null }): Promise<void>
+}
+
+/** Structural mirror of the skill registry (from @deepseek-ai/dsh-skill). */
+export interface SidebarSkillSummary {
+  name: string
+  description: string
+  source: string
+  provider: string
+  invocation: {
+    modelInvocable: boolean
+    userInvocable: boolean
+  }
+}
+
+export interface SidebarSkillRegistry {
+  snapshot(): Promise<{ skills: SidebarSkillSummary[]; complete: boolean }>
+}
+
 /**
  * The shape this plugin actually consumes, intersected with the vendored
  * cordis `Context` below (see the file header for why intersection is used
  * instead of module augmentation).
  */
 export interface SidebarContextShape {
+  /** The Cordis loader (plugin entry tree). */
+  loader: SidebarLoader
+  /** The skill registry (optional — absent when skill service is not loaded). */
+  skills?: SidebarSkillRegistry
   /** The webServer service face this plugin uses. */
   webServer: SidebarWebServer
   /** The session store (host `.get`) and the client list feed (`.list`) faces. */

@@ -112,6 +112,23 @@ export type TerminalDepsStatus =
     note?: string
   }
 
+/** One MCP server entry (from the host's `mcp.list` route). */
+export interface McpServerEntry {
+  entryId: string
+  serverName: string
+  enabled: boolean
+}
+
+/** One skill summary (from the host's `skills.list` route). */
+export interface SkillEntry {
+  name: string
+  description: string
+  source: string
+  provider: string
+  modelInvocable: boolean
+  userInvocable: boolean
+}
+
 async function call<T>(method: string, payload: Record<string, unknown>, signal?: AbortSignal): Promise<T> {
   let response: Response
   try {
@@ -323,6 +340,19 @@ export const api = {
    *  the platform opener (argv, no shell). */
   openExternal: (payload: { action: 'reveal'; path: string } | { action: 'url'; url: string }) =>
     call<{ started: boolean }>('open.external', payload),
+
+  // ── MCP server management ────────────────────────────────────────────
+  /** List every configured MCP server (plugin-global, no session scope). */
+  mcpList: () =>
+    call<{ entries: McpServerEntry[] }>('mcp.list', {}),
+  /** Toggle one MCP server enabled/disabled (the Loader restarts the entry). */
+  mcpToggle: (entryId: string, disabled: boolean) =>
+    call<{ ok: true }>('mcp.toggle', { entryId, disabled }),
+
+  // ── Skill inventory (read-only) ──────────────────────────────────────
+  /** List every known skill and its invocation policy (plugin-global). */
+  skillsList: () =>
+    call<{ skills: SkillEntry[] }>('skills.list', {}),
 }
 
 /** Absolute URL of the media route for one path (images only). */

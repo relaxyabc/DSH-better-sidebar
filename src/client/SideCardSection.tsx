@@ -45,6 +45,8 @@ import {
   IconChevronDownOutline14,
   IconPlusOutline16,
   IconSettingsOutline16,
+  IconApiOutline14,
+  IconSkillOutline16,
   Input,
   Menu,
   Modal,
@@ -62,7 +64,7 @@ import {
   type SidebarPrefs,
   type TitleBarScheme,
 } from '../prefs-shared.ts'
-import { api } from './api.ts'
+import { api, type McpServerEntry, type SkillEntry } from './api.ts'
 import { parsePrefs } from './prefs.ts'
 import { AddPluginModal, type PluginKind } from './add-plugin-modal.tsx'
 import { t } from './locales.ts'
@@ -606,6 +608,20 @@ export function SideCardSection({ store, service }: SideCardSectionProps) {
     setViewers([...service.getFileViewers()].sort(viewerOrder))
   }), [service])
 
+  // ── MCP server inventory ──────────────────────────────────────────────
+  const [mcpServers, setMcpServers] = useState<McpServerEntry[]>([])
+  const [mcpError, setMcpError] = useState<string | null>(null)
+  useEffect(() => {
+    api.mcpList().then(r => setMcpServers(r.entries)).catch(() => setMcpError('MCP'))
+  }, [])
+
+  // ── Skill inventory (read-only) ───────────────────────────────────────
+  const [skills, setSkills] = useState<SkillEntry[]>([])
+  const [skillsError, setSkillsError] = useState<string | null>(null)
+  useEffect(() => {
+    api.skillsList().then(r => setSkills(r.skills)).catch(() => setSkillsError('Skills'))
+  }, [])
+
   // The settings document revision (guards concurrent writes). A ref: commits
   // read the freshest value at execution time, no re-render needed.
   const revisionRef = useRef<number | undefined>(undefined)
@@ -685,6 +701,19 @@ export function SideCardSection({ store, service }: SideCardSectionProps) {
   /** Flip one per-viewer enable switch (merge into the viewersEnabled map). */
   const onToggleViewer = (id: string, next: boolean): void => {
     applyPref({ viewersEnabled: { ...optimisticRef.current.viewersEnabled, [id]: next } })
+  }
+
+  /** Toggle one MCP server entry enabled/disabled (optimistic). */
+  const onToggleMcp = (entryId: string, next: boolean): void => {
+    setMcpServers(prev => prev.map(s => s.entryId === entryId ? { ...s, enabled: next } : s))
+    setMcpError(null)
+    api.mcpToggle(entryId, !next).then(() => {
+      // Refresh the list after the host settles the update.
+      api.mcpList().then(r => setMcpServers(r.entries)).catch(() => {})
+    }).catch((error) => {
+      setMcpError(messageOf(error))
+      setMcpServers(prev => prev.map(s => s.entryId === entryId ? { ...s, enabled: !next } : s))
+    })
   }
 
   /** Flip one declaratively-declared toggle (a SidebarPrefs boolean field). */
@@ -1052,6 +1081,66 @@ export function SideCardSection({ store, service }: SideCardSectionProps) {
           </button>
         </div>
       </div>
+
+      {/* MCP 服务器: one small card per configured MCP server entry. */}
+      {mcpServers.length > 0 && (
+        <div className={css.group}>
+          <div className={css.groupHeading}>
+            <span>{t('settingsMcpTitle')}</span>
+            <span className={css.count}>{mcpServers.length}</span>
+          </div>
+          <div className={css.grid}>
+            {mcpServers.map(server => (
+              <Fragment key={server.entryId}>
+                {renderCard({
+                  title: server.serverName,
+                  desc: server.entryId,
+                  icon: <IconApiOutline14 size={16} />,
+                  enabled: server.enabled,
+                  onToggle: (next) => { onToggleMcp(server.entryId, next) },
+                })}
+              </Fragment>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Skill 清单: read-only display of every known skill and its invocation
+          policy. Individual skills cannot be toggled at runtime — their
+          modelInvocable / userInvocable flags come from YAML frontmatter. */}
+      {skills.length > 0 && (
+        <div className={css.group}>
+          <div className={css.groupHeading}>
+            <span>{t('settingsSkillsTitle')}</span>
+            <span className={css.count}>{skills.length}</span>
+          </div>
+          <div className={css.grid}>
+            {skills.map(skill => (
+              <div
+                key={skill.name}
+                className={clsx(css.card, css.cardOn)}
+              >
+                <div className={css.cardMain} style={{ cursor: 'default' }}>
+                  <span className={css.cardTop}>
+                    <span className={css.cardIconChip}>
+                      <IconSkillOutline16 size={16} />
+                    </span>
+                    <span className={css.cardTitle}>{skill.name}</span>
+                  </span>
+                  <span className={css.cardDesc}>
+                    {skill.description}
+                    <span className={css.skillPolicy}>
+                      {skill.modelInvocable ? t('settingsSkillModelOn') : t('settingsSkillModelOff')}
+                      {' · '}
+                      {skill.userInvocable ? t('settingsSkillUserOn') : t('settingsSkillUserOff')}
+                    </span>
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* The secondary settings popup: a feature's declared related settings
           as title/desc + switch rows in a wider-than-default Modal with a

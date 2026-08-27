@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Korean dictionary for the better-sidebar plugin (LOCALE_NS `betterSidebar`).
  *
  * Key-set-equal to the zh dictionary in `./locales.ts` (zh is the source of
@@ -235,6 +235,12 @@ export const ko: Record<string, string> = {
   settingsShellArgsPlaceholder: '예: -l (비워두면 기본 인수 사용)',
   settingsTabsTitle: '사이드바 콘텐츠',
   settingsViewersTitle: '파일 미리보기',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: '일반',
   settingsPopup: '기능 설정',
   settingsViewerCatchAll: '폴백: 모든 파일',

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The nl (Dutch) dictionary for the betterSidebar namespace.
  *
  * Mirrors the key set of `zh` in `locales.ts`. The sidebar's `t()`
@@ -241,6 +241,12 @@ export const nl: Record<string, string> = {
   settingsShellArgsPlaceholder: 'bijv. -l (leeg = standaardwaarden)',
   settingsTabsTitle: 'Zijbalk-inhoud',
   settingsViewersTitle: 'Bestandsviewers',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Algemeen',
   settingsPopup: 'Functie-instellingen',
   settingsViewerCatchAll: 'Catch-all: elk bestand',

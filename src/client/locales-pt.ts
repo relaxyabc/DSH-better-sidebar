@@ -1,4 +1,4 @@
-export const pt: Record<string, string> = {
+﻿export const pt: Record<string, string> = {
   files: 'Arquivos',
   explorer: 'Explorador',
   git: 'Controle de código-fonte',
@@ -226,6 +226,12 @@ export const pt: Record<string, string> = {
   settingsShellArgsPlaceholder: 'ex.: -l (vazio = padrões)',
   settingsTabsTitle: 'Conteúdo da barra lateral',
   settingsViewersTitle: 'Visualizadores de arquivos',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Geral',
   settingsPopup: 'Configurações do recurso',
   settingsViewerCatchAll: 'Curinga: qualquer arquivo',

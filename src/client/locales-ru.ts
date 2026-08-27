@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Russian (ru) dictionary for the better-sidebar plugin.
  *
  * Translated from the Simplified-Chinese (zh) source-of-truth dictionary in
@@ -240,6 +240,12 @@ export const ru: Record<string, string> = {
   settingsShellArgsPlaceholder: 'напр. -l (пусто = по умолчанию)',
   settingsTabsTitle: 'Содержимое боковой панели',
   settingsViewersTitle: 'Просмотрщики файлов',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Общие',
   settingsPopup: 'Настройки функции',
   settingsViewerCatchAll: 'Универсальный: любой файл',

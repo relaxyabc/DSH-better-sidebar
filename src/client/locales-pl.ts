@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The pl (Polish) dictionary for the betterSidebar namespace.
  *
  * Mirrors the key set of `zh` in `locales.ts`. The sidebar's `t()`
@@ -245,6 +245,12 @@ export const pl: Record<string, string> = {
   settingsShellArgsPlaceholder: 'np. -l (puste = domyślne)',
   settingsTabsTitle: 'Treść panelu bocznego',
   settingsViewersTitle: 'Podglądy plików',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Ogólne',
   settingsPopup: 'Ustawienia funkcji',
   settingsViewerCatchAll: 'Zapasowy: dowolny plik',

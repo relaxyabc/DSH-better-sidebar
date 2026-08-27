@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The th (Thai) dictionary for the betterSidebar namespace.
  *
  * Mirrors the key set of `zh` in `locales.ts`. The sidebar's `t()`
@@ -243,6 +243,12 @@ export const th: Record<string, string> = {
   settingsShellArgsPlaceholder: 'เช่น -l (ว่าง = ค่าเริ่มต้น)',
   settingsTabsTitle: 'เนื้อหาแถบด้านข้าง',
   settingsViewersTitle: 'ตัวพรีวิวไฟล์',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'ทั่วไป',
   settingsPopup: 'การตั้งค่าคุณสมบัติ',
   settingsViewerCatchAll: 'Catch-all: ไฟล์ใดๆ',

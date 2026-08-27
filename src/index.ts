@@ -498,6 +498,52 @@ function buildApi(
         throw new SidebarError('settings-rejected', error instanceof Error ? error.message : String(error), 400)
       }
     },
+    // ── MCP server management ───────────────────────────────────────────
+    // List every configured MCP server entry (plugin name
+    // '@deepseek-ai/dsh-mcp-client') with its serverName and enabled state.
+    'mcp.list': () => {
+      const entries: Array<{ entryId: string; serverName: string; enabled: boolean }> = []
+      for (const entry of ctx.loader.entries()) {
+        if (entry.options.name === '@deepseek-ai/dsh-mcp-client') {
+          const config = entry.options.config as { serverName?: string } | undefined
+          entries.push({
+            entryId: entry.id,
+            serverName: config?.serverName ?? 'unknown',
+            enabled: !entry.disabled,
+          })
+        }
+      }
+      return { entries }
+    },
+    // Toggle one MCP server entry enabled/disabled. The Loader restarts the
+    // entry after the update, so the MCP connection is live-disconnected or
+    // re-established immediately.
+    'mcp.toggle': async (payload) => {
+      const entryId = requireString(payload, 'entryId')
+      const disabled = (payload as { disabled?: unknown }).disabled === true
+      await ctx.loader.update(entryId, { disabled })
+      return { ok: true }
+    },
+    // ── Skill read-only inventory ───────────────────────────────────────
+    // List every skill known to the skill registry (plugin-level entries
+    // are NOT included — the registry only sees individual skills). The
+    // invocation policy (modelInvocable / userInvocable) is read-only here
+    // because it comes from YAML frontmatter and cannot be changed at
+    // runtime. When the skill service is absent the list is empty.
+    'skills.list': async () => {
+      if (ctx.skills === undefined) return { skills: [] }
+      const snapshot = await ctx.skills.snapshot()
+      return {
+        skills: snapshot.skills.map(s => ({
+          name: s.name,
+          description: s.description,
+          source: s.source,
+          provider: s.provider,
+          modelInvocable: s.invocation.modelInvocable,
+          userInvocable: s.invocation.userInvocable,
+        })),
+      }
+    },
     // Probe a URL's RESPONSE HEADERS so the sidebar browser can explain an
     // iframe refusal: X-Frame-Options / CSP frame-ancestors are exactly the
     // signals the browser enforces when it refuses to embed a site. The

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * German dictionary for better-sidebar.
  */
 export const de: Record<string, string> = {
@@ -229,6 +229,12 @@ export const de: Record<string, string> = {
   settingsShellArgsPlaceholder: 'z. B. -l (leer = Standardargumente)',
   settingsTabsTitle: 'Seitenleisten-Inhalt',
   settingsViewersTitle: 'Datei-Viewer',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Allgemein',
   settingsPopup: 'Funktionseinstellungen',
   settingsViewerCatchAll: 'Catch-all: beliebige Datei',

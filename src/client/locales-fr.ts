@@ -1,4 +1,4 @@
-/**
+﻿/**
  * French translation of the better-sidebar copy.
  *
  * Mirrors the key set of the zh dictionary in `locales.ts` (enforced by
@@ -236,6 +236,12 @@ export const fr: Record<string, string> = {
   settingsShellArgsPlaceholder: 'ex. -l (vide = arguments par défaut)',
   settingsTabsTitle: 'Contenu de la barre latérale',
   settingsViewersTitle: 'Aperçus de fichiers',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Général',
   settingsPopup: 'Réglages de la fonctionnalité',
   settingsViewerCatchAll: 'Par défaut : n’importe quel fichier',

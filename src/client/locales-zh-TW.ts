@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The zh-HK (Traditional Chinese — Hong Kong) dictionary for the betterSidebar
  * namespace.
  *
@@ -258,6 +258,12 @@ export const zhTW: Record<string, string> = {
   settingsShellArgsPlaceholder: '如 -l（留空用預設參數）',
   settingsTabsTitle: '側邊欄內容',
   settingsViewersTitle: '檔案預覽',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: '一般',
   settingsPopup: '功能設定',
   settingsViewerCatchAll: '兜底：任意檔案',

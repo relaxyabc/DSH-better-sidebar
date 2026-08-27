@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The hi (Hindi) dictionary for the betterSidebar namespace.
  *
  * Mirrors the key set of `zh` in `locales.ts`. The sidebar's `t()`
@@ -243,6 +243,12 @@ export const hi: Record<string, string> = {
   settingsShellArgsPlaceholder: 'जैसे -l (खाली = डिफ़ॉल्ट)',
   settingsTabsTitle: 'साइडबार सामग्री',
   settingsViewersTitle: 'फ़ाइल दर्शक',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'सामान्य',
   settingsPopup: 'सुविधा सेटिंग्स',
   settingsViewerCatchAll: 'कैच-ऑल: कोई भी फ़ाइल',

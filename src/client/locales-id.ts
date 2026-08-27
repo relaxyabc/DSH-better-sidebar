@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The id (Indonesian) dictionary for the betterSidebar namespace.
  *
  * Mirrors the key set of `zh` in `locales.ts`. The sidebar's `t()`
@@ -241,6 +241,12 @@ export const id: Record<string, string> = {
   settingsShellArgsPlaceholder: 'mis. -l (kosong = default)',
   settingsTabsTitle: 'Konten sidebar',
   settingsViewersTitle: 'Pratinjau berkas',
+  settingsMcpTitle: 'MCP',
+  settingsSkillsTitle: 'Skills',
+  settingsSkillModelOn: '=',
+  settingsSkillModelOff: '=',
+  settingsSkillUserOn: '=',
+  settingsSkillUserOff: '=',
   settingsGeneralTitle: 'Umum',
   settingsPopup: 'Pengaturan fitur',
   settingsViewerCatchAll: 'Catch-all: berkas apa pun',
