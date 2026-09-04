@@ -39,8 +39,9 @@ import css from './sidebar.module.css'
 /** Monotonic id seed: every render call gets a fresh, document-unique id. */
 let mermaidSeq = 0
 
-/** Configure mermaid for the current color scheme (idempotent). */
-function configureMermaid(): void {
+/** Configure mermaid for the current color scheme (idempotent).
+ *  Exported for the conversation observer (mermaid-conversation.ts). */
+export function configureMermaid(): void {
   mermaid.initialize({
     startOnLoad: false,
     securityLevel: 'strict',
@@ -217,8 +218,10 @@ function MermaidZoomModal({ svg, onClose }: { svg: SVGSVGElement; onClose: () =>
   )
 }
 
-/** One rendered mermaid fence: header chrome + diagram (or error + source). */
-function MermaidDiagram({ code }: { code: string }): React.ReactNode {
+/** One rendered mermaid fence: header chrome + diagram (or error + source).
+ *  Exported so the conversation mermaid observer (mermaid-conversation.ts)
+ *  can render individual diagrams outside the markdown preview. */
+export function MermaidDiagram({ code }: { code: string }): React.ReactNode {
   const [svg, setSvg] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
@@ -320,9 +323,10 @@ interface MermaidMount {
  * <code> elements, while the plain path (which is always the one mermaid
  * takes — no shiki grammar) only shows the language in the banner
  * infostring (first element of the banner row; CSS-module classes are
- * hashed, so that match is structural).
+ * hashed, so that match is structural). Exported for the conversation
+ * observer (mermaid-conversation.ts).
  */
-function isMermaidBlock(block: HTMLElement): boolean {
+export function isMermaidBlock(block: HTMLElement): boolean {
   const code = block.querySelector('code')
   if (code !== null && [...code.classList].some(c => c.startsWith('language-mermaid'))) return true
   const infostring = block.firstElementChild?.firstElementChild?.firstElementChild

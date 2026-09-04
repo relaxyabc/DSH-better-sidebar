@@ -20,6 +20,7 @@ import { RenderBoundary } from './RenderBoundary.tsx'
 import { registerOpenPathInterception, registerTurnTailInterception } from './intercept.tsx'
 import { registerLinkInterception } from './link-intercept.ts'
 import { registerImeGuard } from './ime-guard.ts'
+import { startMermaidConversationObserver } from './mermaid-conversation.ts'
 import { registerSettingsNavIcon } from './settings-nav-icon.ts'
 import { loadBootDecision } from './prefs.ts'
 import { SideCardSection } from './SideCardSection.tsx'
@@ -426,6 +427,18 @@ export function apply(ctx: Context): void {
     ctx.effect(
       () => registerSettingsNavIcon(() => t('settingsNav')),
       'dsh-better-sidebar: settings navigation icon',
+    )
+
+    // Mermaid diagram rendering in the DSH conversation area: the main chat
+    // renders markdown code blocks with `language-mermaid` class, but the
+    // DSH `MarkdownText` component does not render them as diagrams. This
+    // MutationObserver watches the document for those blocks and swaps them
+    // for rendered SVGs using the same mermaid chunk as the markdown preview.
+    // The observer is active as long as the plugin is loaded (not gated on
+    // the sidebar panel being open).
+    ctx.effect(
+      () => startMermaidConversationObserver(),
+      'dsh-better-sidebar: mermaid conversation observer',
     )
 
     // The "Side card" settings section: appears in the DSH Settings shell

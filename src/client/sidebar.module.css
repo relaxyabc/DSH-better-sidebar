@@ -1885,6 +1885,8 @@ body[data-dsh-sidebar-dragging] .bottomPanel {
   display: flex;
   justify-content: center;
   padding: 10px;
+  /* 限制内联图表高度，避免占据过多会话空间；超出部分可滚动 */
+  max-height: 360px;
   overflow: auto;
   cursor: zoom-in;
 }
@@ -1964,8 +1966,8 @@ body[data-dsh-sidebar-dragging] .bottomPanel {
 }
 
 .mermaidModalStage {
-  width: 90vw;
-  height: 80vh;
+  width: 95vw;
+  height: 90vh;
   overflow: hidden;
   position: relative;
   display: flex;
